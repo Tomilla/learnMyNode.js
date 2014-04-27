@@ -1,23 +1,27 @@
 var fs = require('fs')
-fs.readFile(process.argv[2], function(err, data) {
-    if (err)
-        throw err
-    console.log(data.toString().split('\n').length - 1)
+var path = require('path')
+
+fs.readdir(process.argv[2], function (err, files) {
+    for (var idx = 0; idx < files.length; idx++) {    //alias 'idx' as index
+        var filter = "." + process.argv[3]
+        if (path.extname(files[idx]) == filter)
+            console.log(files[idx])
+    }
 })
 
 /*
  * Here's the official solution is if you want to compare notes:
  *────────────────────────────────────────────────────────────────────────────────
 
-	var fs = require('fs')
-	var file = process.argv[2]
+    var fs = require('fs')
+    var path = require('path')
 
-	//fs.readFile(file, function (err, contents) {		//can also be used
-	fs.readFile(file, 'utf8', function(callback, data) {
-    	//var lines = contents.toString().split('\n').length - 1	//can also be used
-    	var lines = data.split('\n').length - 1
-    	console.log(lines)
-	})
+    fs.readdir(process.argv[2], function (err, list) {
+      list.forEach(function (file) {
+        if (path.extname(file) === '.' + process.argv[3])
+          console.log(file)
+      })
+    })
 
  *────────────────────────────────────────────────────────────────────────────────
  */
