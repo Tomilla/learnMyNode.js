@@ -1,0 +1,28 @@
+{
+  "name": "greet",
+  "version": "0.0.0",
+  "description": "a simple and native greeter",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tomilla/learnMyNode.js.git"
+  },
+  "keywords": [
+    "hello-world"
+  ],
+  "author": "Gero Rim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tomilla/learnMyNode.js/issues"
+  },
+  "homepage": "https://github.com/Tomilla/learnMyNode.js",
+  "devDependencies": {
+    "mocha": "^1.18.2"
+  }
+  "bin": {
+    "greet": "./bin/greet.js"
+  }
+}
