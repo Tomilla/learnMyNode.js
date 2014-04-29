@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/Tomilla/learnMyNode.js",
   "devDependencies": {
-    "mocha": "^1.18.2"
+    "mocha": "^1.18.2",
+    "chai": "^1.9.1"
   },
   "bin": {
     "greet": "./bin/greet.js"
