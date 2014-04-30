@@ -1,5 +1,5 @@
 describe('greet', function() {
-	greet = require('../src/index.coffee')
+	greet = require('../lib/index')
 	it("shousd greet a person by name", function() {
     	assert.equal(greet('gerorim'), "Hello gerorim")
 	})
