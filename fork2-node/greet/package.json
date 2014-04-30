@@ -2,7 +2,7 @@
   "name": "greet",
   "version": "0.0.0",
   "description": "a simple and native greeter",
-  "main": "index.js",
+  "main": "./src/index.coffee",
   "scripts": {
     "test": "mocha"
   },
@@ -21,7 +21,8 @@
   "homepage": "https://github.com/Tomilla/learnMyNode.js",
   "devDependencies": {
     "mocha": "^1.18.2",
-    "chai": "^1.9.1"
+    "chai": "^1.9.1",
+    "coffee-script": "^1.7.1"
   },
   "bin": {
     "greet": "./bin/greet.js"
