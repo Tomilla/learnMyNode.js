@@ -1,3 +1,3 @@
 #!/usr/bin/env node
-var command = require("../src/command.coffee")
+var command = require("../lib/command")
 command()

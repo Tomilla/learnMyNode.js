@@ -1,8 +1,7 @@
-module.exports = function greet(inputName, drinkMartinis) {
-    if (drinkMartinis) {
+greet = (inputName, drinkMartinis) ->
+    if (drinkMartinis)
         return 'Hello ' + inputName + ', you look so sexy today'
-    }
-    else {
+    else
         return "Hello " + inputName
-    }
-}
+
+module.exports = greet
