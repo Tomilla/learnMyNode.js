@@ -1,3 +1,3 @@
 #!/usr/bin/env node
-var command = require("../lib/command")
-command()
+var command = require("../lib/command");
+command();
