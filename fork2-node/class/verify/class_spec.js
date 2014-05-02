@@ -74,7 +74,10 @@ describe("Implement Class __super__",function() {
       return 2;
     }
   },A);
-
+  console.log( '#region');
+  console.log( A, '+' , B );//
+  console.log( B.__super__ );//
+  console.log( '#endregion')
   it("should set the __super__ class property to the parent class",function() {
     expect(B.__super__).to.eq(A);
   });
