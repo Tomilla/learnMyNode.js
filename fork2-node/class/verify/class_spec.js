@@ -74,6 +74,7 @@ describe("Implement Class __super__",function() {
       return 2;
     }
   },A);
+
   it("should set the __super__ class property to the parent class",function() {
     expect(B.__super__).to.eq(A);
   });
@@ -97,14 +98,11 @@ describe("Implement Methods Inheritance", function() {
   },A);
 
   var b = new B();
+
   describe("b",function() {
     it("should be an instance of B",function() {
       expect(b.constructor).to.eq(B);
     });
-
-    console.log( '#region : spec' );//
-    console.log( A + '\n' + B + '\n' + b.a + '\n');
-    console.log( '#endregion' );//
 
     it("should be able to call method `a` through inheritance",function() {
       expect(b.a).to.be.a("function");
