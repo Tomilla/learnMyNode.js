@@ -1,5 +1,12 @@
 module.exports = function(incomes, origin) {
 
+    ///////////////////////////////////////////////////////////////////////
+    function pr(string) {
+      console.log(string);
+    }
+    ///////////////////////////////////////////////////////////////////////
+
+
     var derive = incomes.initialize || function () {},
         __hasProp = {}.hasOwnProperty;
 
@@ -15,34 +22,34 @@ module.exports = function(incomes, origin) {
     for ( var mapping in incomes ) {
         // `__hasProp.call( incomes, mapping)` deeply equal `incomes.hasOwnProperty(mapping)`
         if ( __hasProp.call( incomes, mapping ) &&
+            typeof incomes[mapping] == 'function' &&
             mapping != "initialize" ) {
             derive.prototype[ mapping ] = incomes[ mapping ];
         }
     }
 
-    var curr_class;
+    var temp;
     function ccc( target ) {    //change current class
-        curr_class = target;
+        temp = target;
     }
 
     ccc(derive);
     derive.prototype.super = function() {
-        ccc(curr_class.__super__);
+        ccc(temp.__super__);
+
         var thisFunc = arguments[0],
-            argsArry = Array.prototype.slice.call(arguments, 1),
-            result = curr_class.prototype[ thisFunc ].apply( this, argsArry );
+            argsArry = Array.prototype.slice.call(arguments, 1, arguments.length),
+            result = temp.prototype[ thisFunc ].apply( this, argsArry );
+
+        ///////////////////////////////////////////////////////////////
+        pr( '#region : test' );
+        pr( '#endregion' );
+        ///////////////////////////////////////////////////////////////
+
         ccc(derive);
-        return curr_class.__super__.prototype[ thisFunc ] !== undefined ?
+        return temp.__super__.prototype[ thisFunc ] !== undefined ?
             result : undefined;
     };
-
-    ///////////////////////////////////////////////////////////////////////
-    function println(string) {
-      console.log(string);
-    }
-    println( '#region : test' );
-    println( '#endregion' );
-    ///////////////////////////////////////////////////////////////////////
 
     return derive;
 };
