@@ -1,26 +1,32 @@
 module.exports = function(incomes, origin) {
 
-    ///////////////////////////////////////////////////////////////////////
-    function pr(string) {
-      console.log(string);
+    ////////////////////////////////////////////////////////////////////
+    function prpr( string ) {
+      console.log( string );
     }
-    ///////////////////////////////////////////////////////////////////////
-
+    ////////////////////////////////////////////////////////////////////
 
     var derive = incomes.initialize || function () {},
         __hasProp = {}.hasOwnProperty;
 
+/*
+ *Absraction Form, @Hayeah Not Recommended
+ *──────────────────────────────────────────────────────────────────────
     function ctor() {
        this.constructor = derive;
     };
-
     origin = origin || Object;
     ctor.prototype = origin.prototype;
     derive.prototype = new ctor();
+ *──────────────────────────────────────────────────────────────────────
+**/
+
+    derive.prototype.constructor = derive;
     derive.__super__ = origin || Object;
 
     for ( var mapping in incomes ) {
-        // `__hasProp.call( incomes, mapping)` deeply equal `incomes.hasOwnProperty(mapping)`
+        //# `__hasProp.call( incomes, mapping)`
+        //# deeply equal `incomes.hasOwnProperty(mapping)`
         if ( __hasProp.call( incomes, mapping ) &&
             typeof incomes[mapping] == 'function' &&
             mapping != "initialize" ) {
@@ -28,26 +34,20 @@ module.exports = function(incomes, origin) {
         }
     }
 
-    var temp;
-    function ccc( target ) {    //change current class
-        temp = target;
-    }
+    ////////////////////////////////////////////////////////////////////
+    prpr( '#region : test' );
+    prpr( '#endregion' );
+    ////////////////////////////////////////////////////////////////////
 
-    ccc(derive);
-    derive.prototype.super = function() {
-        ccc(temp.__super__);
+    var temp = derive;
+    derive.prototype.super = function( _0thArg ) {
+        temp = temp.__super__;
+        var result = temp.prototype[ _0thArg ].apply( this,
+            [].slice.call(arguments, 1));
 
-        var thisFunc = arguments[0],
-            argsArry = Array.prototype.slice.call(arguments, 1, arguments.length),
-            result = temp.prototype[ thisFunc ].apply( this, argsArry );
-
-        ///////////////////////////////////////////////////////////////
-        pr( '#region : test' );
-        pr( '#endregion' );
-        ///////////////////////////////////////////////////////////////
-
-        ccc(derive);
-        return temp.__super__.prototype[ thisFunc ] !== undefined ?
+        //# make 'temp class' point back to 'derive class'
+        temp = derive;
+        return temp.__super__.prototype[ _0thArg ] !== undefined ?
             result : undefined;
     };
 

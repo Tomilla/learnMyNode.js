@@ -1,10 +1,10 @@
 all: compile mocha pack show
 compile:
 	coffee --compile --output lib src
-mocha: compile
+mocha:
 	mocha -R spec
-pack: mocha
+pack:
 	sudo npm pack
-show: pack
+show:
 	tar -ztf ./greet-0.0.0.tgz
 .PHONY: compile mocha pack show
