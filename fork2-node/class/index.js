@@ -1,7 +1,7 @@
 module.exports = function(incomes, origin) {
 
     ////////////////////////////////////////////////////////////////////
-    function prpr( string ) {
+    function prpr( string ) {   //ペロペロ
       console.log( string );
     }
     ////////////////////////////////////////////////////////////////////
@@ -9,7 +9,13 @@ module.exports = function(incomes, origin) {
     var derive = incomes.initialize || function () {},
         __hasProp = {}.hasOwnProperty;
 
-    derive.prototype.constructor = derive;
+    function ctor() {
+       this.constructor = derive;
+    };
+
+    origin = origin || Object;
+    ctor.prototype = origin.prototype;
+    derive.prototype = new ctor();
     derive.__super__ = origin || Object;
 
     for ( var mapping in incomes ) {
