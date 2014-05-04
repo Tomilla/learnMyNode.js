@@ -9,18 +9,6 @@ module.exports = function(incomes, origin) {
     var derive = incomes.initialize || function () {},
         __hasProp = {}.hasOwnProperty;
 
-/*
- *Absraction Form, @Hayeah Not Recommended
- *──────────────────────────────────────────────────────────────────────
-    function ctor() {
-       this.constructor = derive;
-    };
-    origin = origin || Object;
-    ctor.prototype = origin.prototype;
-    derive.prototype = new ctor();
- *──────────────────────────────────────────────────────────────────────
-**/
-
     derive.prototype.constructor = derive;
     derive.__super__ = origin || Object;
 
