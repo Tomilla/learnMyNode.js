@@ -17,7 +17,7 @@ var B = Class({
 var C = Class({
   foo: function(a,b) {
     console.log("C#foo",a,b);
-    return this.super("foo",a*10,b*100);
+    return this.super("foo",a*10,b*100);q
   }
 },B);
 

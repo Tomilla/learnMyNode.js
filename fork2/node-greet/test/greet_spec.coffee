@@ -1,6 +1,6 @@
 describe('greet', ->
-	greet =
-        require('../lib/index')
+	greet =      
+		require('../lib/index')
 	it("shousd greet a person by name", ->
     	assert.equal(greet('gerorim'), "Hello gerorim")
 	)
