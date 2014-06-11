@@ -1,21 +1,24 @@
-var concatStream = require('concat-stream')
+var argvArr = [].slice.call(process.argv, 2)
+  , concatStream = require('concat-stream')
   , http = require('http')
   , results = []
   , counter = 0
-  , idx = 2;
+  , idx = 0;
 
-for ( ; idx < 5; idx++) {
+var THREE_URLS = 3;
+
+for ( ; idx < THREE_URLS; idx++) {
   myHttpGet(idx);
 }
 
 function myHttpGet(index) {
-  http.get(process.argv[index], function (response) {
+  http.get(argvArr[index], function (response) {
     response.pipe(concatStream(function (chunk) {
 
-      results[index - 2] = chunk + '';
+      results[index] = chunk + '';
       counter++;
 
-      if (counter == 3) {
+      if (counter == THREE_URLS) {
         results.forEach(function (stream) {
           console.log(stream);
         });
@@ -23,7 +26,6 @@ function myHttpGet(index) {
     }));
   });
 }
-
 
 /**
  * Here's the official solution is if you want to compare notes:
@@ -57,6 +59,6 @@ function myHttpGet(index) {
     for (var i = 0; i < 3; i++)
       httpGet(i)
 
-  * ────────────────────────────────────────────────────────────────────
-  *
- **/
+ * ─────────────────────────────────────────────────────────────────────
+ *
+**/
