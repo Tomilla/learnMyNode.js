@@ -1,4 +1,4 @@
-  >**The range() function
+  >**The range() function**
   >Description
 
 ```
@@ -52,7 +52,7 @@
 
 ----
 
-  >**Best Practives
+  >**Best Practives**
 
 ```
     @Author: dangerhire8
@@ -74,7 +74,7 @@
 
 ----
 
-  >**Normal Solution
+  >**Normal Solution**
 
 ```
     @Author: dportzline83, abahrain
@@ -135,4 +135,4 @@
     }
 ```
 ref.via: [CodeWar][1]
-[1]:(http://www.codewars.com/kata/5298961d9ce954d77b0003a6/solutions/javascript)
+[1]: http://www.codewars.com/kata/5298961d9ce954d77b0003a6/solutions/javascript
